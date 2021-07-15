@@ -13,6 +13,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   UserDefined userdefined = UserDefined();
+  final formKey = GlobalKey<FormState>();
+  final userText = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,6 +37,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Form(
+                key: formKey,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -61,6 +64,12 @@ class _LoginState extends State<Login> {
                           style: userdefined.styleText(size: f22)),
                       Opacity(opacity: 0, child: Divider()),
                       TextFormField(
+                        controller: userText,
+                        validator: (value) {
+                          if (value!.isEmpty || value == '') {
+                            return 'Please fill';
+                          }
+                        },
                         decoration: userdefined.formDecor(
                             text: 'email@gmail.com', sizeFont: 20),
                       ),
@@ -68,6 +77,11 @@ class _LoginState extends State<Login> {
                       Text('Password', style: userdefined.styleText(size: f22)),
                       Opacity(opacity: 0, child: Divider()),
                       TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please fill';
+                            }
+                          },
                           decoration: userdefined.formDecor(
                               text: '********',
                               sizeFont: 20,
@@ -104,7 +118,13 @@ class _LoginState extends State<Login> {
                             ],
                           ),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Logged()));
+                            var key = formKey.currentState;
+                            if (key!.validate()) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Logged()));
+                            }
                           },
                         ),
                       ),

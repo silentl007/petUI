@@ -35,24 +35,24 @@ class _RegisterState extends State<Register> {
                   ),
                   Text('Create An Account',
                       style: userdefined.styleText(size: 30)),
-                      Divider(),
+                      Divider(color: Colors.transparent,),
                   Text('First Name', style: userdefined.styleText(size: f22)),
                   TextFormField(
                     decoration:
                         userdefined.formDecor(text: 'Micheal', sizeFont: 20),
                   ),
-                  Divider(),
+                  Divider(color: Colors.transparent,),
                   Text('Last Name', style: userdefined.styleText(size: f22)),
                   TextFormField(
                       decoration:
                           userdefined.formDecor(text: 'John', sizeFont: 20)),
-                  Divider(),
+                  Divider(color: Colors.transparent,),
                   Text('Email', style: userdefined.styleText(size: f22)),
                   TextFormField(
                     decoration: userdefined.formDecor(
                         text: 'email@gmail.com', sizeFont: 20),
                   ),
-                  Divider(),
+                  Divider(color: Colors.transparent,),
                   Text('Password', style: userdefined.styleText(size: f22)),
                   TextFormField(
                       decoration: userdefined.formDecor(
@@ -62,7 +62,7 @@ class _RegisterState extends State<Register> {
                             Icons.remove_red_eye,
                             color: Colors.black,
                           ))),
-                  Divider(),
+                  Divider(color: Colors.transparent,),
                   Text('Confirm Password',
                       style: userdefined.styleText(size: f22)),
                   TextFormField(
@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
                             Icons.remove_red_eye,
                             color: Colors.black,
                           ))),
-                  Divider(),
+                  Divider(color: Colors.transparent,),
                   CheckboxListTile(
                     value: _check,
                     onChanged: (bool? value) {
@@ -83,6 +83,7 @@ class _RegisterState extends State<Register> {
                       });
                     },
                     title: Text('I have accepted all terms and conditions'),
+                    // subtitle: Text('Tap to accept', style: TextStyle(fontStyle: FontStyle.italic),),
                   ),
                   SizedBox(
                     height: 55,
